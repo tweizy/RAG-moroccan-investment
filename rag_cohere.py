@@ -12,11 +12,9 @@ from vectordb.metadata_store import retrieve_metadata
 ###############################################################################
 #                          CONFIGURATION / CONSTANTS
 ###############################################################################
-if "COHERE_API_KEY" in st.secrets:
-    os.environ["COHERE_API_KEY"] = st.secrets["COHERE_API_KEY"]
-    COHERE_API_KEY = st.secrets["COHERE_API_KEY"]
-else:
-    st.error("COHERE_API_KEY is not set in secrets.")
+
+COHERE_API_KEY = "2RoQeyk7U6YzpaIGxlKJtNcqUkYHYn1boOSQEGmE"
+
 FAISS_INDEX_PATH = "./vectordb/faiss_index.index"
 FAISS_ID_MAP_PATH = "./vectordb/faiss_id_map.txt"
 METADATA_DB_PATH = "./vectordb/metadata.db"
@@ -78,8 +76,8 @@ def build_cohere_prompt(retrieved_chunks, user_query):
         "accurate, and concise answers about Moroccan investment insights. "
         "You have access to the following context from various PDFs. "
         "Use ONLY the context below to answer the user's query. "
-        "If the context is insufficient to answer, state 'Not enough information' "
-        "and then proceed to answer the question based on your training data. "
+        "If the context is insufficient to answer, mention it"
+        "and then proceed to answer the question without taking into consideration the context. "
         "When providing information, include statistics only when you are certain of their accuracy "
         "and cite your sources whenever possible."
     )

@@ -5,14 +5,6 @@ import streamlit as st
 from markdown import markdown
 from rag_cohere import cohere_rag_response
 
-# Ensure that the necessary directories exist
-os.makedirs("./vectordb", exist_ok=True)
-os.makedirs("./chunks", exist_ok=True)
-if "COHERE_API_KEY" in st.secrets:
-    os.environ["COHERE_API_KEY"] = st.secrets["COHERE_API_KEY"]
-else:
-    st.error("COHERE_API_KEY is not set in secrets.")
-
 ###############################################################################
 # Streamlit Application
 ###############################################################################
