@@ -14,6 +14,7 @@ from vectordb.metadata_store import retrieve_metadata
 ###############################################################################
 if "COHERE_API_KEY" in st.secrets:
     os.environ["COHERE_API_KEY"] = st.secrets["COHERE_API_KEY"]
+    COHERE_API_KEY = st.secrets["COHERE_API_KEY"]
 else:
     st.error("COHERE_API_KEY is not set in secrets.")
 FAISS_INDEX_PATH = "./vectordb/faiss_index.index"
