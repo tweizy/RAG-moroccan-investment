@@ -2,6 +2,8 @@
 
 Welcome to the Cohere RAG Streamlit Application, a Retrieval-Augmented Generation (RAG) system designed to provide insightful answers about Moroccan investment opportunities. This application leverages Cohere's powerful language models, FAISS for efficient similarity search, and Streamlit for an intuitive web interface.
 
+Link to deployed app: https://rag-moroccan-investment-euqtsjktzywwsngdx25vpb.streamlit.app/
+
 ## Table of Contents
 - [Features](#features)
 - [Project Structure](#project-structure)
