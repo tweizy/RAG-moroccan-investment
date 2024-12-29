@@ -15,7 +15,6 @@ class FaissIndex:
         if index_type == "Flat":
             self.index = faiss.IndexFlatL2(dimension)  # Basic L2 distance
         else:
-            # Extend for other index types, e.g., IVF, HNSW, etc.
             self.index = faiss.IndexFlatL2(dimension)
 
     def add_vectors(self, vectors: np.ndarray, ids: List[str]) -> None:

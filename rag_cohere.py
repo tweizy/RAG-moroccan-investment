@@ -1,11 +1,8 @@
-import os
-import json
 import cohere
 import numpy as np
 from sentence_transformers import SentenceTransformer
 import streamlit as st
 
-# Imports from your local modules (adjust paths as needed)
 from vectordb.faiss_index import FaissIndex
 from vectordb.metadata_store import retrieve_metadata
 
@@ -18,11 +15,11 @@ COHERE_API_KEY = "2RoQeyk7U6YzpaIGxlKJtNcqUkYHYn1boOSQEGmE"
 FAISS_INDEX_PATH = "./vectordb/faiss_index.index"
 FAISS_ID_MAP_PATH = "./vectordb/faiss_id_map.txt"
 METADATA_DB_PATH = "./vectordb/metadata.db"
-EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"   # Must match your chunk embeddings
-TOP_K = 5                                   # How many chunks to retrieve
-COHERE_MODEL = "command-xlarge-nightly"     # Or another Cohere model
-MAX_TOKENS = 1000                            # How long you allow Cohere's response to be
-TEMPERATURE = 0.3                        # Creativity of the response
+EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"   
+TOP_K = 5                                   
+COHERE_MODEL = "command-xlarge-nightly"     
+MAX_TOKENS = 1000                           
+TEMPERATURE = 0.3                        
 
 ###############################################################################
 #                    FUNCTION TO RETRIEVE CONTEXT FROM VECTOR DB
@@ -83,7 +80,6 @@ def build_cohere_prompt(retrieved_chunks, user_query):
     )
 
     # 2) Gather relevant context from retrieved chunks
-    #    We can highlight the chunk's source PDF if helpful
     context_lines = []
     for i, chunk in enumerate(retrieved_chunks, start=1):
         context_lines.append(
