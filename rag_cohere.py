@@ -3,7 +3,7 @@ import json
 import cohere
 import numpy as np
 from sentence_transformers import SentenceTransformer
-from dotenv import load_dotenv
+import streamlit as st
 
 # Imports from your local modules (adjust paths as needed)
 from vectordb.faiss_index import FaissIndex
@@ -12,8 +12,10 @@ from vectordb.metadata_store import retrieve_metadata
 ###############################################################################
 #                          CONFIGURATION / CONSTANTS
 ###############################################################################
-load_dotenv()
-COHERE_API_KEY = os.getenv("COHERE_API_KEY")
+if "COHERE_API_KEY" in st.secrets:
+    os.environ["COHERE_API_KEY"] = st.secrets["COHERE_API_KEY"]
+else:
+    st.error("COHERE_API_KEY is not set in secrets.")
 FAISS_INDEX_PATH = "./vectordb/faiss_index.index"
 FAISS_ID_MAP_PATH = "./vectordb/faiss_id_map.txt"
 METADATA_DB_PATH = "./vectordb/metadata.db"
