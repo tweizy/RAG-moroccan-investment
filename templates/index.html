@@ -1,0 +1,53 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card p-4 mb-4">
+  <h2 class="card-title">Cohere RAG Demo</h2>
+  <p class="text-muted">
+    Enter your query about Moroccan investment insights, and see a Cohere-based answer.
+  </p>
+  <form method="post" class="row g-3">
+    <div class="col-12">
+      <label for="user_query" class="form-label fw-semibold">Your Query</label>
+      <textarea
+        class="form-control"
+        id="user_query"
+        name="user_query"
+        rows="3"
+        placeholder="e.g. What incentives does Morocco offer to foreign automotive investors?"
+      >{{ user_query|default("") }}</textarea>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Generate</button>
+    </div>
+  </form>
+</div>
+
+{% if final_answer_html %}
+<div class="card p-4 mb-4">
+  <h2 class="card-title mb-3">Answer</h2>
+  <!-- Render the markdown-converted HTML safely -->
+  <div class="markdown-body">
+    {{ final_answer_html|safe }}
+  </div>
+</div>
+{% endif %}
+
+{% if retrieved_chunks %}
+<div class="card p-4 mb-4">
+  <h4 class="card-title">Retrieved Chunks</h4>
+  <ul class="list-group list-group-flush">
+    {% for chunk in retrieved_chunks %}
+      <li class="list-group-item">
+        <strong>PDF:</strong> {{ chunk.pdf_name }}<br/>
+        <strong>Chunk ID:</strong> {{ chunk.chunk_id }}<br/>
+        <strong>Distance:</strong> {{ chunk.distance|round(4) }}<br/>
+        <strong>Snippet:</strong> {{ chunk.chunk_text[:200] }}...
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% endblock %}

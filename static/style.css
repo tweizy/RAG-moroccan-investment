@@ -1,0 +1,15 @@
+/* static/style.css */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown-body strong {
+  color: #2c3e50;
+}
+
+.markdown-body p {
+  margin-bottom: 0.8rem;
+}

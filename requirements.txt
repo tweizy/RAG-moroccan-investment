@@ -1,0 +1,11 @@
+numpy
+sentence-transformers
+faiss-cpu
+sqlite-utils
+cohere
+python-dotenv
+pdfplumber
+nltk
+tqdm
+markdown
+streamlit
